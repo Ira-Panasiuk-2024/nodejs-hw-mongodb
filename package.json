@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "type": "module",
+  "main": "index.js",
   "scripts": {
-    "lint": "eslint src/**/*.js",
-    "start": "node ./src/index.js",
-    "dev": "nodemon src/index.js"
+    "dev": "nodemon src/index.js",
+    "start": "node src/index.js"
   },
   "keywords": [],
   "author": "Irina Panasiuk <panasykira2022@gmail.com>",
@@ -22,6 +22,7 @@
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
+    "mongoose": "^8.11.0",
     "pino-http": "^10.4.0"
   }
 }
