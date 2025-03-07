@@ -13,7 +13,8 @@ const PORT = Number(getEnvVar('PORT', '9393'));
 export const setupServer = () => {
   const app = express();
 
-  app.use(express.json());
+  // app.use(express.json());
+  
   app.use(cors());
 
   app.use(
