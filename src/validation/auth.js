@@ -1,0 +1,52 @@
+import Joi from 'joi';
+
+export const registerUserSchema = Joi.object({
+  name: Joi.string().trim().min(3).max(20).required().messages({
+    'string.min': 'Name should have at least 3 characters',
+    'string.max': 'Name should have at most 20 characters',
+    'any.required': 'Name is required',
+  }),
+  email: Joi.string().trim().email().messages({
+    'string.email': 'Email should be a valid email address',
+  }),
+  password: Joi.string()
+    .trim()
+    .min(6)
+    .max(30)
+    .pattern(
+      new RegExp(
+        '^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{6,30}$',
+      ),
+    )
+    .required()
+    .messages({
+      'string.min': 'Password should have at least 6 characters',
+      'string.max': 'Password should have at most 30 characters',
+      'string.pattern.base':
+        'Password should contain at least one lowercase letter, one uppercase letter, one number and one special character',
+      'any.required': 'Password is required',
+    }),
+});
+
+export const loginUserSchema = Joi.object({
+  email: Joi.string().trim().email().messages({
+    'string.email': 'Email should be a valid email address',
+  }),
+  password: Joi.string()
+    .trim()
+    .min(6)
+    .max(30)
+    .pattern(
+      new RegExp(
+        '^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{6,30}$',
+      ),
+    )
+    .required()
+    .messages({
+      'string.min': 'Password should have at least 6 characters',
+      'string.max': 'Password should have at most 30 characters',
+      'string.pattern.base':
+        'Password should contain at least one lowercase letter, one uppercase letter, one number and one special character',
+      'any.required': 'Password is required',
+    }),
+});
