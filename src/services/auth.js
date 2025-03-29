@@ -6,14 +6,16 @@ import handlebars from 'handlebars';
 import path from 'node:path';
 import fs from 'node:fs/promises';
 
-import { UsersCollection } from '../db/models/user.js';
 import {
   FIFTEEN_MINUTES,
   THIRTY_DAYS,
   SMTP,
   TEMPLATES_DIR,
 } from '../constants/index.js';
+
+import { UsersCollection } from '../db/models/user.js';
 import { SessionsCollection } from '../db/models/session.js';
+
 import { getEnvVar } from '../utils/getEnvVar.js';
 import { sendEmail } from '../utils/sendMail.js';
 
@@ -112,7 +114,7 @@ export const requestResetToken = async (email) => {
     },
     getEnvVar('JWT_SECRET'),
     {
-      expiresIn: '15m',
+      expiresIn: '5m',
     },
   );
 
@@ -140,11 +142,13 @@ export const requestResetToken = async (email) => {
       html,
     });
   } catch (error) {
-    console.error('Failed to send reset password email:', error);
-    throw createHttpError(
-      500,
-      'Failed to send the email, please try again later!',
-    );
+    if (!error.status) {
+      throw createHttpError(
+        500,
+        'Failed to send the email, please try again later.',
+      );
+    }
+    throw error;
   }
 };
 
@@ -153,9 +157,8 @@ export const resetPassword = async (payload) => {
 
   try {
     entries = jwt.verify(payload.token, getEnvVar('JWT_SECRET'));
-  } catch (err) {
-    if (err instanceof Error) throw createHttpError(401, err.message);
-    throw err;
+  } catch {
+    throw createHttpError(401, 'Token is expired or invalid.');
   }
 
   const user = await UsersCollection.findOne({
@@ -173,4 +176,6 @@ export const resetPassword = async (payload) => {
     { _id: user._id },
     { password: encryptedPassword },
   );
+
+  await SessionsCollection.deleteMany({ userId: user._id });
 };

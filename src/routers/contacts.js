@@ -1,4 +1,5 @@
 import { Router } from 'express';
+
 import { jsonParser } from '../constants/index.js';
 
 import {
@@ -10,8 +11,10 @@ import {
 } from '../controllers/contacts.js';
 
 import { isValidID } from '../middlewares/isValidID.js';
-import { ctrlWrapper } from '../utils/ctrlWrapper.js';
 import { validateBody } from '../middlewares/validateBody.js';
+import { upload } from '../middlewares/multer.js';
+
+import { ctrlWrapper } from '../utils/ctrlWrapper.js';
 
 import {
   createContactSchema,
@@ -28,6 +31,7 @@ router.delete('/:contactId', isValidID, ctrlWrapper(deleteContactController));
 
 router.post(
   '/',
+  upload.single('photo'),
   jsonParser,
   validateBody(createContactSchema),
   ctrlWrapper(createContactController),
@@ -36,6 +40,7 @@ router.post(
 router.patch(
   '/:contactId',
   isValidID,
+  upload.single('photo'),
   jsonParser,
   validateBody(updateContactSchema),
   ctrlWrapper(updateContactController),
