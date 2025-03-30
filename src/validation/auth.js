@@ -12,16 +12,16 @@ export const registerUserSchema = Joi.object({
   }),
   password: Joi.string()
     .trim()
-    .min(6)
+    .min(8)
     .max(30)
     .pattern(
       new RegExp(
-        '^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{6,30}$',
+        '^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,30}$',
       ),
     )
     .required()
     .messages({
-      'string.min': 'Password should have at least 6 characters',
+      'string.min': 'Password should have at least 8 characters',
       'string.max': 'Password should have at most 30 characters',
       'string.pattern.base':
         'Password should contain at least one lowercase letter, one uppercase letter, one number and one special character',
@@ -36,16 +36,16 @@ export const loginUserSchema = Joi.object({
   }),
   password: Joi.string()
     .trim()
-    .min(6)
+    .min(8)
     .max(30)
     .pattern(
       new RegExp(
-        '^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{6,30}$',
+        '^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,30}$',
       ),
     )
     .required()
     .messages({
-      'string.min': 'Password should have at least 6 characters',
+      'string.min': 'Password should have at least 8 characters',
       'string.max': 'Password should have at most 30 characters',
       'string.pattern.base':
         'Password should contain at least one lowercase letter, one uppercase letter, one number and one special character',
@@ -63,16 +63,16 @@ export const requestResetEmailSchema = Joi.object({
 export const resetPasswordSchema = Joi.object({
   password: Joi.string()
     .trim()
-    .min(6)
+    .min(8)
     .max(30)
     .pattern(
       new RegExp(
-        '^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{6,30}$',
+        '^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,30}$',
       ),
     )
     .required()
     .messages({
-      'string.min': 'Password should have at least 6 characters',
+      'string.min': 'Password should have at least 8 characters',
       'string.max': 'Password should have at most 30 characters',
       'string.pattern.base':
         'Password should contain at least one lowercase letter, one uppercase letter, one number and one special character',
