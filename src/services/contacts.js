@@ -77,7 +77,7 @@ export const updateContact = async (contactId, contactData, userId) => {
   const contact = await ContactsCollection.findOneAndUpdate(
     { _id: contactId, userId },
     contactData,
-    { new: true },
+    { new: true, includeResultMetadata: true },
   );
 
   return contact;
