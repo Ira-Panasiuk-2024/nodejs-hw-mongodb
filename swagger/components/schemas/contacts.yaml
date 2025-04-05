@@ -1,5 +1,6 @@
 type: object
 required:
+  - _id
   - name
   - phoneNumber
   - contactType
@@ -29,13 +30,26 @@ properties:
     description: Whether the contact is marked as a favorite
     type: boolean
     example: false
+    default: false
   contactType:
     description: Contact's type
     type: string
     enum: ['work', 'home', 'personal']
+    example: personal
+    default: personal
   photo:
     description: Link to contact's photo
     type: string
-    example: "https://res.cloudinary.com/dlejcfotr/image/upload/v1743263889/cl4t7hdyrzxbzxhqeh5i.jpg"
+    example: 'https://res.cloudinary.com/dlejcfotr/image/upload/v1743263889/cl4t7hdyrzxbzxhqeh5i.jpg'
     # Example with local file path:
     # example: "http://localhost:9393/auth/uploads/1743264785038_avatar.jpg"
+  createdAt:
+    description: Contact's creation date
+    type: string
+    format: date-time
+    example: '2025-04-01T00:00:00.000Z'
+  updatedAt:
+    description: Contact's last update date
+    type: string
+    format: date-time
+    example: '2025-04-01T00:00:00.000Z'

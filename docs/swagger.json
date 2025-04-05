@@ -171,9 +171,6 @@
           "401": {
             "$ref": "#/components/responses/401"
           },
-          "404": {
-            "$ref": "#/components/responses/404"
-          },
           "500": {
             "$ref": "#/components/responses/500"
           }
@@ -272,11 +269,11 @@
               }
             }
           },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
           "401": {
             "$ref": "#/components/responses/401"
-          },
-          "404": {
-            "$ref": "#/components/responses/404"
           },
           "500": {
             "$ref": "#/components/responses/500"
@@ -446,6 +443,9 @@
               }
             }
           },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
           "401": {
             "$ref": "#/components/responses/401"
           },
@@ -559,6 +559,9 @@
                 }
               }
             }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
           },
           "409": {
             "description": "Conflict Error",
@@ -675,6 +678,9 @@
                 }
               }
             }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
           },
           "401": {
             "$ref": "#/components/responses/401",
@@ -829,6 +835,10 @@
               }
             }
           },
+          "400": {
+            "$ref": "#/components/responses/400",
+            "description": "Bad request"
+          },
           "404": {
             "$ref": "#/components/responses/404",
             "description": "User not found"
@@ -897,6 +907,9 @@
               }
             }
           },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
           "401": {
             "$ref": "#/components/responses/401",
             "description": "Token is expired or invalid."
@@ -923,6 +936,7 @@
       "contacts": {
         "type": "object",
         "required": [
+          "_id",
           "name",
           "phoneNumber",
           "contactType",
@@ -957,7 +971,8 @@
           "isFavourite": {
             "description": "Whether the contact is marked as a favorite",
             "type": "boolean",
-            "example": false
+            "example": false,
+            "default": false
           },
           "contactType": {
             "description": "Contact's type",
@@ -966,18 +981,33 @@
               "work",
               "home",
               "personal"
-            ]
+            ],
+            "example": "personal",
+            "default": "personal"
           },
           "photo": {
             "description": "Link to contact's photo",
             "type": "string",
             "example": "https://res.cloudinary.com/dlejcfotr/image/upload/v1743263889/cl4t7hdyrzxbzxhqeh5i.jpg"
+          },
+          "createdAt": {
+            "description": "Contact's creation date",
+            "type": "string",
+            "format": "date-time",
+            "example": "2025-04-01T00:00:00.000Z"
+          },
+          "updatedAt": {
+            "description": "Contact's last update date",
+            "type": "string",
+            "format": "date-time",
+            "example": "2025-04-01T00:00:00.000Z"
           }
         }
       },
       "user": {
         "type": "object",
         "required": [
+          "_id",
           "name",
           "email",
           "password"
@@ -1002,11 +1032,60 @@
             "description": "User's password",
             "type": "string",
             "example": "pCVVJHbCsY57"
+          },
+          "createdAt": {
+            "description": "User's creation date",
+            "type": "string",
+            "format": "date-time",
+            "example": "2025-04-01T00:00:00.000Z"
+          },
+          "updatedAt": {
+            "description": "User's last update date",
+            "type": "string",
+            "format": "date-time",
+            "example": "2025-04-01T00:00:00.000Z"
           }
         }
       }
     },
     "responses": {
+      "400": {
+        "description": "Bad Request error",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "required": [
+                "status",
+                "message",
+                "data"
+              ],
+              "properties": {
+                "status": {
+                  "type": "integer",
+                  "example": 400
+                },
+                "message": {
+                  "type": "string",
+                  "example": "BadRequestError"
+                },
+                "data": {
+                  "type": "object",
+                  "required": [
+                    "message"
+                  ],
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Invalid request data"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
       "401": {
         "description": "Unauthorized error",
         "content": {

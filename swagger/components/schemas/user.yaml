@@ -1,5 +1,6 @@
 type: object
 required:
+  - _id
   - name
   - email
   - password
@@ -20,3 +21,13 @@ properties:
     description: User's password
     type: string
     example: 'pCVVJHbCsY57'
+  createdAt:
+    description: User's creation date
+    type: string
+    format: date-time
+    example: '2025-04-01T00:00:00.000Z'
+  updatedAt:
+    description: User's last update date
+    type: string
+    format: date-time
+    example: '2025-04-01T00:00:00.000Z'
