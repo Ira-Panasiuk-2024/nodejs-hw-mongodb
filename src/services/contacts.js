@@ -25,19 +25,27 @@ export const getAllContacts = async ({
   //   }
   // }
 
-  if (filter.type) {
-    if (Array.isArray(filter.type)) {
-      contactsQuery.where('contactType').in(filter.type);
-    } else {
-      contactsQuery.where('contactType').equals(filter.type);
-    }
+  // if (filter.type) {
+  //   if (Array.isArray(filter.type)) {
+  //     contactsQuery.where('contactType').in(filter.type);
+  //   } else {
+  //     contactsQuery.where('contactType').equals(filter.type);
+  //   }
+  // }
+
+  // if (filter.isFavourite !== undefined) {
+  //   contactsQuery.where('isFavourite').equals(filter.isFavourite);
+  // }
+
+  // console.log('contactsQuery:', contactsQuery);
+
+  if (filter.contactType) {
+    contactsQuery.where('contactType').equals(filter.contactType);
   }
 
   if (filter.isFavourite !== undefined) {
     contactsQuery.where('isFavourite').equals(filter.isFavourite);
   }
-
-  console.log('contactsQuery:', contactsQuery);
 
   const [contactsCount, contacts] = await Promise.all([
     ContactsCollection.find().merge(contactsQuery).countDocuments(),
