@@ -1,3 +1,15 @@
+// const parseContactType = (value) => {
+//   if (typeof value === 'undefined') {
+//     return;
+//   }
+//   const isContactType = ['work', 'home', 'personal'];
+//   if (Array.isArray(value)) {
+//     return value.filter((item) => isContactType.includes(item));
+//   } else {
+//     return isContactType.includes(value) ? value : undefined;
+//   }
+// };
+
 const parseContactType = (value) => {
   if (typeof value === 'undefined') {
     return;
@@ -6,7 +18,7 @@ const parseContactType = (value) => {
   if (Array.isArray(value)) {
     return value.filter((item) => isContactType.includes(item));
   } else {
-    return isContactType.includes(value) ? value : undefined;
+    return isContactType.includes(value) ? [value] : undefined;
   }
 };
 
@@ -28,6 +40,9 @@ export const parseFilterParams = (query) => {
 
   const parsedContactType = parseContactType(type);
   const parsedIsFavourite = parseIsFavourite(isFavourite);
+
+  console.log('parsedContactType:', parsedContactType);
+  console.log('parsedIsFavourite:', parsedIsFavourite);
 
   return {
     type: parsedContactType,

@@ -17,6 +17,14 @@ export const getAllContacts = async ({
 
   const contactsQuery = ContactsCollection.find({ userId });
 
+  // if (filter.type) {
+  //   if (Array.isArray(filter.type)) {
+  //     contactsQuery.where('contactType').in(filter.type);
+  //   } else {
+  //     contactsQuery.where('contactType').equals(filter.type);
+  //   }
+  // }
+
   if (filter.type) {
     if (Array.isArray(filter.type)) {
       contactsQuery.where('contactType').in(filter.type);
@@ -28,6 +36,8 @@ export const getAllContacts = async ({
   if (filter.isFavourite !== undefined) {
     contactsQuery.where('isFavourite').equals(filter.isFavourite);
   }
+
+  console.log('contactsQuery:', contactsQuery);
 
   const [contactsCount, contacts] = await Promise.all([
     ContactsCollection.find().merge(contactsQuery).countDocuments(),
