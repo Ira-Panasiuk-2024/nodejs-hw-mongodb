@@ -17,28 +17,6 @@ export const getAllContacts = async ({
 
   const contactsQuery = ContactsCollection.find({ userId });
 
-  // if (filter.type) {
-  //   if (Array.isArray(filter.type)) {
-  //     contactsQuery.where('contactType').in(filter.type);
-  //   } else {
-  //     contactsQuery.where('contactType').equals(filter.type);
-  //   }
-  // }
-
-  // if (filter.type) {
-  //   if (Array.isArray(filter.type)) {
-  //     contactsQuery.where('contactType').in(filter.type);
-  //   } else {
-  //     contactsQuery.where('contactType').equals(filter.type);
-  //   }
-  // }
-
-  // if (filter.isFavourite !== undefined) {
-  //   contactsQuery.where('isFavourite').equals(filter.isFavourite);
-  // }
-
-  // console.log('contactsQuery:', contactsQuery);
-
   if (filter.contactType) {
     contactsQuery.where('contactType').equals(filter.contactType);
   }
@@ -91,12 +69,26 @@ export const createContact = async (contactData, userId) => {
   return contact;
 };
 
-export const updateContact = async (contactId, contactData, userId) => {
-  const contact = await ContactsCollection.findOneAndUpdate(
+export const updateContact = async (
+  contactId,
+  payload,
+  options = {},
+  userId,
+) => {
+  const rawResult = await ContactsCollection.findOneAndUpdate(
     { _id: contactId, userId },
-    contactData,
-    { new: true, includeResultMetadata: true },
+    payload,
+    {
+      new: true,
+      includeResultMetadata: true,
+      ...options,
+    },
   );
 
-  return contact;
+  if (!rawResult || !rawResult.value) return null;
+
+  return {
+    contact: rawResult.value,
+    isNew: Boolean(rawResult?.lastErrorObject?.upserted),
+  };
 };
