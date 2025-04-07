@@ -29,14 +29,6 @@ export const getAllContactsController = async (req, res) => {
     userId: req.user._id,
   });
 
-  if (contacts.data.length === 0) {
-    return res.status(404).json({
-      status: 404,
-      message: 'No contacts found for the given filter.',
-      data: [],
-    });
-  }
-
   res.status(200).json({
     status: 200,
     message: 'Successfully found contacts!',
