@@ -17,7 +17,15 @@ const PORT = Number(getEnvVar('PORT', '3000'));
 export const setupServer = () => {
   const app = express();
 
-  app.use(cors());
+  const corsOptions = {
+    origin: [
+      'http://localhost:5173',
+      'https://goit-react-hw-08-black-delta.vercel.app',
+    ],
+    credentials: true,
+  };
+  app.use(cors(corsOptions));
+
   app.use(cookieParser());
 
   app.use(
@@ -28,11 +36,11 @@ export const setupServer = () => {
     }),
   );
 
+  app.use(router);
+
   app.use('/uploads', express.static(UPLOAD_DIR));
 
   app.use('/api-docs', swaggerDocs());
-
-  app.use(router);
 
   app.use('*', notFoundHandler);
 
