@@ -14,6 +14,8 @@ This project is a Node.js application built with MongoDB as part of homework ass
 - **Mongoose** - MongoDB object modeling library
 - **dotenv** - Environment variables management
 - **cors** - Cross-Origin Resource Sharing middleware
+- **swagger-ui-express** - Swagger UI for API documentation
+- **swagger-jsdoc** - JSDoc comments to OpenAPI specification
 
 ### 📦 Installation
 
@@ -102,6 +104,8 @@ This project is created for educational purposes.
 - **Mongoose** - бібліотека для роботи з MongoDB
 - **dotenv** - управління змінними середовища
 - **cors** - міделвара для Cross-Origin Resource Sharing
+- **swagger-ui-express** - Swagger UI для документації API
+- **swagger-jsdoc** - генерація OpenAPI специфікації з JSDoc коментарів
 
 ### 📦 Встановлення
 
