@@ -73,16 +73,6 @@ GOOGLE_OAUTH_CLIENT_SECRET=                 # Google OAuth client secret
 npm run dev
 ```
 
-### 🛠️ Available Scripts
-
-- `npm start` - Start the production server
-- `npm run dev` - Start the development server with nodemon
-- `npm test` - Run tests (if configured)
-
-## 🔧 API Endpoints
-
-The application provides RESTful API endpoints for managing resources. Detailed API documentation will be added as the project develops.
-
 ## 🤝 Contributing
 
 This is a homework project, but feedback and suggestions are welcome! Please feel free to:
@@ -170,16 +160,6 @@ GOOGLE_OAUTH_CLIENT_SECRET=                 # Секретний ключ клі
 ```bash
 npm run dev
 ```
-
-### 🛠️ Доступні скрипти
-
-- `npm start` - Запуск продакшн сервера
-- `npm run dev` - Запуск сервера розробки з nodemon
-- `npm test` - Запуск тестів (якщо налаштовано)
-
-## 🔧 API ендпоінти
-
-Додаток надає RESTful API ендпоінти для управління ресурсами. Детальна документація API буде додана по мірі розвитку проєкту.
 
 ## 🤝 Внесення змін
 
