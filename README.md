@@ -35,28 +35,36 @@ npm install
 3. Create a `.env` file in the root directory and add your environment variables:
 
 ```bash
-PORT=
-MONGODB_USER=
-MONGODB_PASSWORD=
-MONGODB_URL=
-MONGODB_DB=
+PORT=5000                                    # Port for the server to run on
 
-SMTP_HOST=
-SMTP_PORT=
-SMTP_USER=
-SMTP_PASSWORD=
-SMTP_FROM=
-JWT_SECRET=
-APP_DOMAIN=
+# MongoDB Configuration
+MONGODB_USER=your_mongodb_username          # MongoDB username
+MONGODB_PASSWORD=your_mongodb_password      # MongoDB password
+MONGODB_URL=your_mongodb_cluster_url        # MongoDB cluster URL
+MONGODB_DB=phonebook_db                     # Database name
 
-CLOUD_NAME=
-API_KEY=
-API_SECRET=
+# Authentication
+JWT_SECRET=your_super_secret_jwt_key        # Secret key for JWT token generation
 
-ENABLE_CLOUDINARY=
+# Application Domain
+APP_DOMAIN=http://localhost:5000            # Application domain URL
 
-GOOGLE_OAUTH_CLIENT_ID=
-GOOGLE_OAUTH_CLIENT_SECRET=
+# Cloudinary Configuration (for image uploads)
+CLOUD_NAME=your_cloudinary_cloud_name       # Cloudinary cloud name
+API_KEY=your_cloudinary_api_key             # Cloudinary API key
+API_SECRET=your_cloudinary_api_secret       # Cloudinary API secret
+ENABLE_CLOUDINARY=true                      # Enable/disable Cloudinary integration
+
+# Email Configuration
+SMTP_HOST=                                  # SMTP server hostname
+SMTP_PORT=                                  # SMTP server port number
+SMTP_USER=                                  # SMTP authentication username  
+SMTP_PASSWORD=                              # SMTP authentication password
+SMTP_FROM=                                  # Email address for outgoing emails
+
+# Google OAuth Configuration
+GOOGLE_OAUTH_CLIENT_ID=                     # Google OAuth client ID
+GOOGLE_OAUTH_CLIENT_SECRET=                 # Google OAuth client secret
 ```
 
 4. Start the development server:
@@ -125,28 +133,36 @@ npm install
 3. Створіть файл `.env` в кореневій директорії та додайте змінні середовища:
 
 ```bash
-PORT=
-MONGODB_USER=
-MONGODB_PASSWORD=
-MONGODB_URL=
-MONGODB_DB=
+PORT=5000                                    # Порт для запуску сервера
 
-SMTP_HOST=
-SMTP_PORT=
-SMTP_USER=
-SMTP_PASSWORD=
-SMTP_FROM=
-JWT_SECRET=
-APP_DOMAIN=
+# Конфігурація MongoDB
+MONGODB_USER=your_mongodb_username          # Ім'я користувача MongoDB
+MONGODB_PASSWORD=your_mongodb_password      # Пароль MongoDB
+MONGODB_URL=your_mongodb_cluster_url        # URL кластера MongoDB
+MONGODB_DB=phonebook_db                     # Назва бази даних
 
-CLOUD_NAME=
-API_KEY=
-API_SECRET=
+# Автентифікація
+JWT_SECRET=your_super_secret_jwt_key        # Секретний ключ для генерації JWT токенів
 
-ENABLE_CLOUDINARY=
+# Домен додатка
+APP_DOMAIN=http://localhost:5000            # URL домену додатка
 
-GOOGLE_OAUTH_CLIENT_ID=
-GOOGLE_OAUTH_CLIENT_SECRET=
+# Конфігурація Cloudinary (для завантаження зображень)
+CLOUD_NAME=your_cloudinary_cloud_name       # Назва хмари Cloudinary
+API_KEY=your_cloudinary_api_key             # API ключ Cloudinary
+API_SECRET=your_cloudinary_api_secret       # API секрет Cloudinary
+ENABLE_CLOUDINARY=true                      # Увімкнути/вимкнути інтеграцію Cloudinary
+
+# Конфігурація електронної пошти
+SMTP_HOST=                                  # Ім'я хоста SMTP сервера
+SMTP_PORT=                                  # Номер порту SMTP сервера
+SMTP_USER=                                  # Ім'я користувача для аутентифікації SMTP
+SMTP_PASSWORD=                              # Пароль для аутентифікації SMTP
+SMTP_FROM=                                  # Адреса електронної пошти для вихідних листів
+
+# Конфігурація Google OAuth
+GOOGLE_OAUTH_CLIENT_ID=                     # ID клієнта Google OAuth
+GOOGLE_OAUTH_CLIENT_SECRET=                 # Секретний ключ клієнта Google OAuth
 ```
 
 4. Запустіть сервер розробки:
