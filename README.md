@@ -55,7 +55,7 @@ API_KEY=your_cloudinary_api_key             # Cloudinary API key
 API_SECRET=your_cloudinary_api_secret       # Cloudinary API secret
 ENABLE_CLOUDINARY=true                      # Enable/disable Cloudinary integration
 
-# Email Configuration
+# Email Configuration  brevo.com
 SMTP_HOST=                                  # SMTP server hostname
 SMTP_PORT=                                  # SMTP server port number
 SMTP_USER=                                  # SMTP authentication username  
@@ -153,7 +153,7 @@ API_KEY=your_cloudinary_api_key             # API ключ Cloudinary
 API_SECRET=your_cloudinary_api_secret       # API секрет Cloudinary
 ENABLE_CLOUDINARY=true                      # Увімкнути/вимкнути інтеграцію Cloudinary
 
-# Конфігурація електронної пошти
+# Конфігурація електронної пошти  brevo.com
 SMTP_HOST=                                  # Ім'я хоста SMTP сервера
 SMTP_PORT=                                  # Номер порту SMTP сервера
 SMTP_USER=                                  # Ім'я користувача для аутентифікації SMTP
